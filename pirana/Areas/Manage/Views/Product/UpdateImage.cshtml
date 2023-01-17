@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateImage";
+}
+@model UpdateImageVM
+
+<div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Update Products</h4>
+                  <form class="forms-sample" method="post"  enctype="multipart/form-data">
+                    <div class="form-group mt-2">
+                    @foreach (var item in Model.ProductImages.Where(p => p.IsCover == true) ?? new List<ProductImage>())
+                    {
+                                        <label asp-for="ImageIds"><img width="90" src="~/assets/images/product/@item.ImgUrl"/></label>
+                    }
+                    </div>
+                    <div>
+                      <label asp-for="CoverImage"></label>
+                      <input asp-for="CoverImage" class="form-control">
+                      <span asp-validation-for="CoverImage" class="text-danger"></span>
+                    </div>
+                    <div>
+                    @foreach (var item in Model.ProductImages.Where(p => p.IsCover == false) ?? new List<ProductImage>())
+                    {
+                                        <label asp-for="ImageIds"><img width="90" src="~/assets/images/product/@item.ImgUrl"/></label>
+                    }
+                    </div>
+                     <div class="form-group mt-2">
+                         <label asp-for="HoverImage"></label>
+                         <input asp-for="HoverImage" class="form-control"/>
+                         <span asp-validation-for="HoverImage" ></span>
+                    </div>
+                    <div>
+                    @foreach (var item in Model.ProductImages.Where(p => p.IsCover == null) ?? new List<ProductImage>())
+                                {
+                                    <input type="checkbox" name="ImageIds"  ><img width="90" src="~/assets/images/product/@item.ImgUrl"/>
+                        }
+                    </div>
+                     <div class="form-group mt-2">
+                         <label asp-for="OtherImages"></label>
+                         <input asp-for="OtherImages" class="form-control"/>
+                         <span asp-validation-for="OtherImages" ></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2 mt-3">Update</button>
+                    <button class="btn btn-light mt-3" asp-area="Manage" asp-controller="Product" asp-action="Index">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+

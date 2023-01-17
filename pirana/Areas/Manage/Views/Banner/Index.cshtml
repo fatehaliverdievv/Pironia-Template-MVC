@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model ICollection<Banner>
+<div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Img</th>
+                          <th>Title</th>
+                          <th>Secondary Title</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+            @foreach (Banner item in Model)
+            {
+                                                <tr>
+                                                  <td>@item.Id</td>
+                                                  <td><img width="40" src="~/assets/images/@item.ImgUrl"></td>
+                                                  <td>@item.Title</td>
+                                                  <td>@item.SecondaryTitle</td>
+                                                  <td><a type="button" class="btn btn-dark" asp-area="Manage" asp-controller="Banner" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                                                  <td><a type="button" class="btn btn-success"  asp-area="Manage" asp-controller="Banner" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+                                                </tr>
+            }
+                      </tbody>  
+                    </table>
+                  </div>

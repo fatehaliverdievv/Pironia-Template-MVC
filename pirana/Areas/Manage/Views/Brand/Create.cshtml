@@ -1,0 +1,21 @@
+﻿@model CreateBrandVm
+<div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Brands</h4>
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label asp-for="Image"></label>
+                      <input accept="image/*" asp-for="Image" class="form-control">
+                      <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Create</button>
+                    <button class="btn btn-light" asp-area="Manage" asp-controller="Brand" asp-action="Index">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+
+
